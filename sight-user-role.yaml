@@ -12,6 +12,7 @@ includedPermissions:
 - lifesciences.operations.list
 - lifesciences.workflows.run
 - run.routes.invoke
+- run.services.create
 - run.services.get
 - storage.buckets.create
 - storage.buckets.get

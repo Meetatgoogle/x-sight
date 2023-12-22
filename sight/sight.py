@@ -41,6 +41,8 @@ from sight.widgets.decision import decision
 
 load_dotenv()
 FLAGS = flags.FLAGS
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+_SCHEMA_FILE_PATH = os.path.join(current_script_directory, 'proto', 'avroSchema.avsc')
 
 def generate_default_sight_params():
   """Returns a sight object with default parameters.
@@ -249,7 +251,7 @@ class Sight(object):
               f'{os.environ["SIGHT_PATH"]}/proto/avroSchema.avsc'
           )
         else:
-          self.avro_schema = load_schema('sight/proto/avroSchema.avsc')
+          self.avro_schema = load_schema(_SCHEMA_FILE_PATH)
           self.avro_log = io.BytesIO()
           self.avro_record_counter = 0
           self.avro_file_counter = 0

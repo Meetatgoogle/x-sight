@@ -38,6 +38,8 @@ from sight import data_structures
 load_dotenv()
 FLAGS = flags.FLAGS
 
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+_CERT_FILE_PATH = os.path.join(current_script_directory, '..', 'service', 'sight_service.cert')
 
 _SERVICE_NAME = flags.DEFINE_string(
     'service_name',
@@ -376,10 +378,11 @@ def obtain_secure_channel():
   # hosted server
   if 'SIGHT_SERVICE_PATH' in os.environ:
     cert_file = (
-        f'{os.environ["SIGHT_SERVICE_PATH"]}/decision/sight_service.cert'
+        f'{os.environ["SIGHT_SERVICE_PATH"]}/sight_service.cert'
     )
   else:
-    cert_file = 'service/sight_service.cert'
+    cert_file = _CERT_FILE_PATH
+    print('cert_file : ', cert_file)
   with open(cert_file, 'rb') as f:
     creds = grpc.ssl_channel_credentials(f.read())
   channel_opts = [

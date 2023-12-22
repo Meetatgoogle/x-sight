@@ -66,9 +66,7 @@ terminal to refresh the credentials.
 ```bash
 #clone and fetch latest sigh code from gerrit
 cd ~/
-git clone https://partner-code.googlesource.com/x-sight
-cd x-sight
-git fetch https://partner-code.googlesource.com/x-sight refs/changes/63/609763/2 && git checkout -b change-609763 FETCH_HEAD
+git clone https://github.com/theteamatx/sight.git
 ```
 
 #### Create virtual env:
@@ -91,10 +89,16 @@ pip install -r ~/x-sight/sight/requirements.txt
 echo 'export PYTHONPATH="$HOME/x-sight:$PYTHONPATH"' >> ~/.bashrc
 source  ~/.bashrc
 source ~/venvs/sight_env/bin/activate
-cd ~/x-sight
+cd ~/sight
 ```
 
 ### User Permissions:
+
+Note : all the follow up commands using $PROJECT_ID assumes you have it already set to your gcp project id. If not, set it via
+```bash
+export PROJECT_ID=YOUR_ACTUAL_PROJECT_ID
+```
+
 
 For completing rest of the task from prerequisites, either one needs owner role
 and directly continue to [this](#heading=h.gmwxj9f1df9f) section or one can
